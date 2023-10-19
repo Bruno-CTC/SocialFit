@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+ <!--this file is for inputs with rounded edges, and with a background color of white
+ i also want it to have a bit of padding
+ -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#fff" />
+            <corners android:radius="70dp" />
+            <padding android:left="10dp"/>
+        </shape>
+    </item>
+</selector>

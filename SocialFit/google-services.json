@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "70185079098",
+    "project_id": "socialfit-8cf31",
+    "storage_bucket": "socialfit-8cf31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70185079098:android:d1767bafb1bcb60b19c003",
+        "android_client_info": {
+          "package_name": "com.example.socialfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70185079098-aq3luu8aoc98hvsopgs7hauu6k25js96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjTXnrHd6RsjM8w0XLGV1-GYxRAGehOiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70185079098-aq3luu8aoc98hvsopgs7hauu6k25js96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
