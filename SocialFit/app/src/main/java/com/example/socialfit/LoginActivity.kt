@@ -15,8 +15,7 @@ import org.json.JSONException
 class LoginActivity : AppCompatActivity() {
 
     companion object {
-        private const val TAG = "LoginActivity"
-        private const val BASE_URL = "http://192.168.15.102:3000" // Replace with your API base URL
+        private const val BASE_URL = "http://192.168.168.97:3000" // Replace with your API base URL
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +63,9 @@ class LoginActivity : AppCompatActivity() {
                     val user = response.getString("password")
                     if (user == password) {
                         showErrorDialog("Success", "Login successful")
+                        val intent = Intent(this, HomeActivity::class.java)
+                        intent.putExtra("username", username)
+                        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
                     } else {
                         showErrorDialog("Error", "Incorrect password")
                     }
@@ -86,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showErrorDialog(title : String, message: String?) {
         AlertDialog.Builder(this)
-            .setTitle("Error")
+            .setTitle(title)
             .setMessage(message ?: "Unknown error")
             .setPositiveButton("OK", null)
             .show()
