@@ -6,56 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".TrainListActivity">
 
-    <View
-        android:id="@+id/view6"
-        android:layout_width="357dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="148dp"
-        android:background="@drawable/border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view7"
-        android:layout_width="208dp"
-        android:layout_height="303dp"
-        android:background="@drawable/border"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="309dp"
-        android:layout_height="179dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="168dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="146dp"
-        android:layout_height="271dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="404dp" />
-
     <ImageView
         android:id="@+id/bttnCasa2"
         android:layout_width="45dp"
         android:layout_height="41dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_icon"
-        tools:layout_editor_absoluteX="350dp" />
+        app:srcCompat="@drawable/home_icon" />
 
     <ImageView
         android:id="@+id/bttnPontinho"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/list_icon"
-        tools:layout_editor_absoluteX="16dp" />
+        app:srcCompat="@drawable/list_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

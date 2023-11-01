@@ -166,6 +166,85 @@ app.post('/user', async (req, res) => {
     }
 });
 
+app.post('/user/:id/training', async (req, res) => {
+    const id = req.params.id;
+    const newTraining = req.body;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        const trainings = user.data().treinos;
+        trainings.push(newTraining);
+        await setDoc(doc(db, 'user', id), user.data());
+        handleResponse(res, 201, 'Training created');
+    }
+});
+
+app.post('/user/:id/:trainingId/day', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const newDay = req.body;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        const trainings = user.data().treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            const days = training.dias;
+            days.push(newDay);
+            await setDoc(doc(db, 'user', id), user.data());
+            handleResponse(res, 201, 'Day created');
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
+app.post('/user/:id/:trainingId/:day/exercise', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const day = req.params.day;
+    const newExercise = req.body;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        const trainings = user.data().treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            const days = training.dias;
+            const dayTrainings = days[day];
+            if (dayTrainings) {
+                const exercises = dayTrainings.exercicios;
+                exercises.push(newExercise);
+                await setDoc(doc(db, 'user', id), user.data());
+                handleResponse(res, 201, 'Exercise created');
+            } else {
+                handleResponse(res, 404, 'Day does not exist');
+            }
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
+app.put('/user/:id/:trainingId', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const updatedTraining = req.body;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        const trainings = user.data().treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            trainings[trainingId] = updatedTraining;
+            await setDoc(doc(db, 'user', id), user.data());
+            handleResponse(res, 200, 'Training updated');
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
 app.put('/user/:id', async (req, res) => {
     const id = req.params.id;
     const updatedUser = req.body;
@@ -204,7 +283,6 @@ app.delete('/user/:id', async (req, res) => {
         handleResponse(res, 404, 'User does not exist');
     }
 });
-
 
 app.use((req, res) => {
     handleResponse(res, 404, '404 Not Found');

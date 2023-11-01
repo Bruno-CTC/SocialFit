@@ -117,8 +117,10 @@
         android:id="@+id/textView10"
         android:layout_width="171dp"
         android:layout_height="58dp"
+        android:layout_marginTop="220dp"
         android:text="Id do usuario"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="221dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
