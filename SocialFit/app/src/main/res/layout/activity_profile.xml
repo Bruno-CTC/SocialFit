@@ -9,23 +9,12 @@
         android:id="@+id/imgUser3"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/desc_user_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_icon" />
-
-    <ImageView
-        android:id="@+id/imgUser4"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="68dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/desc_user_icon"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user_icon" />
 
@@ -105,30 +94,31 @@
         app:layout_constraintTop_toTopOf="@+id/view5" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="4dp"
+        android:id="@+id/bttnTres"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/list_icon" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="208dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search_icon" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="348dp"
+        android:id="@+id/bttnHomesinha"
+        android:layout_width="45dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="356dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="171dp"
+        android:layout_height="58dp"
+        android:text="Id do usuario"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="221dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

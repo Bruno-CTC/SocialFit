@@ -1,9 +1,10 @@
-package com.example.socialfit;
+package com.example.socialfit
 
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -17,6 +18,8 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         private const val BASE_URL = "http://192.168.168.97:3000" // Replace with your API base URL
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,13 @@ class LoginActivity : AppCompatActivity() {
                 showErrorDialog("Error", e.message)
             }
         }
+
+        val home = findViewById<ImageView>(R.id.bttnHome)
+        home.setOnClickListener{
+            val intent = Intent(this,HomeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun makeLoginRequest(username: String, password: String) {

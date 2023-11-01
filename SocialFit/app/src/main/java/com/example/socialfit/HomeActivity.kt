@@ -1,8 +1,12 @@
 package com.example.socialfit
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -23,6 +27,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home);
         requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 
+        val casinha = findViewById<Button>(R.id.bttnCasinha)
+        casinha.setOnClickListener{
+            val intention = Intent(this,HomeActivity::class.java)
+            startActivity(intention)
+        }
         // as extra info you get the username from the login
         username = intent.getStringExtra("username")
         // chance the txtUsername to the user's name (database), use volley
@@ -48,5 +57,7 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 }

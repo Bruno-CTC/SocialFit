@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".LoginActivity">
+
     <View
         android:id="@+id/view"
         android:layout_width="345dp"
@@ -67,12 +68,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="80dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/usuario_lower"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <EditText
         android:id="@+id/tvSenhaLogin"
@@ -81,12 +82,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="140dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/senha_lower"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -124,5 +125,14 @@
         android:text="@string/naotemconta"
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <ImageView
+        android:id="@+id/bttnHome"
+        android:layout_width="45dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_icon"
+        tools:layout_editor_absoluteX="350dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

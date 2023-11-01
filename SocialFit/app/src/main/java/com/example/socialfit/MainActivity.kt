@@ -143,5 +143,12 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+        val btnCasa  = findViewById<Button>(R.id.btnCasa)
+        btnCasa.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
