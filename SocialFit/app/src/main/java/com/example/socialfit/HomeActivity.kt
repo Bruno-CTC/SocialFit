@@ -1,12 +1,9 @@
 package com.example.socialfit
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -35,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         // as extra info you get the username from the login
         username = intent.getStringExtra("username")
         // chance the txtUsername to the user's name (database), use volley
-        val txtUsername = findViewById<TextView>(R.id.txtUsername)
+        val txtUsername = findViewById<TextView>(R.id.txtName)
         val queue: RequestQueue = Volley.newRequestQueue(this)
 
         // get data for that user
@@ -57,5 +54,50 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        val btnTreinoInicianteInferiores = findViewById<Button>(R.id. bttnTreinoIniInf)
+        btnTreinoInicianteInferiores.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnTreinoInicianteFull = findViewById<Button>(R.id.bttnTreinoIniFull)
+        btnTreinoInicianteFull.setOnClickListener{
+            val intent = Intent(this, TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnTreinoInicianteCostas = findViewById<Button>(R.id.bttnTreinoIniCostas)
+        btnTreinoInicianteCostas.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        val btnTreinoInterInfe = findViewById<Button>(R.id.bttnTreinoIntInf)
+        btnTreinoInterInfe.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnTreinoInterSup = findViewById<Button>(R.id.bttnTreinoIntSup)
+        btnTreinoInterSup.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnTreinoInterBody = findViewById<Button>(R.id.bttnTreinoIntBody)
+        btnTreinoInterBody.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnTreinoAvaOmbro = findViewById<Button>(R.id.bttnTreinoAvaOmbros)
+        btnTreinoAvaOmbro.setOnClickListener{
+            val intent = Intent(this,TrainActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

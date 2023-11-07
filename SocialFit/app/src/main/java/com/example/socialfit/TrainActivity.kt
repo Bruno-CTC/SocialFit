@@ -29,8 +29,8 @@ class TrainActivity:AppCompatActivity() {
         }
         val bttnAdicionar = findViewById<ImageView>(R.id.bttnAdEx)
         bttnAdicionar.setOnClickListener{
-            //aqui devemos adicionar o treino desejado no perfil do usuario
-            val intent = Intent(this,ProfileActivity::class.java)
+            //aqui devemos adicionar mais um exercício do treino que já está sendo mostrado, mas isso deve ser feito no outro activity
+            val intent = Intent(this,AdActivity::class.java)
             startActivity(intent)
         }
 

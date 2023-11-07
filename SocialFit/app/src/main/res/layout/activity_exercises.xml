@@ -7,19 +7,19 @@
 
     <ImageView
         android:id="@+id/bttnHom"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="36dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon"
-        tools:layout_editor_absoluteX="350dp" />
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
         android:id="@+id/bttnTres"
         android:layout_width="35dp"
         android:layout_height="35dp"
         app:srcCompat="@drawable/list_icon"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="360dp"
         tools:layout_editor_absoluteY="28dp" />
 
     <View
@@ -29,29 +29,29 @@
         android:background="#dee4fc"
         android:backgroundTint="#dee4fc"
         tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="163dp" />
+        tools:layout_editor_absoluteY="107dp" />
 
     <ImageView
         android:id="@+id/bttnAdEx"
-        android:layout_width="76dp"
-        android:layout_height="56dp"
+        android:layout_width="51dp"
+        android:layout_height="36dp"
         app:srcCompat="@drawable/adicionar"
-        tools:layout_editor_absoluteX="305dp"
-        tools:layout_editor_absoluteY="671dp" />
+        tools:layout_editor_absoluteX="330dp"
+        tools:layout_editor_absoluteY="635dp" />
 
     <ImageView
         android:id="@+id/bttnVoltar"
-        android:layout_width="69dp"
-        android:layout_height="52dp"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
         app:srcCompat="@drawable/voltar"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="28dp" />
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="681dp" />
 
     <ImageView
         android:id="@+id/bttnDeletar"
-        android:layout_width="65dp"
-        android:layout_height="61dp"
+        android:layout_width="34dp"
+        android:layout_height="35dp"
         app:srcCompat="@drawable/deletar"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="666dp" />
+        tools:layout_editor_absoluteX="340dp"
+        tools:layout_editor_absoluteY="114dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

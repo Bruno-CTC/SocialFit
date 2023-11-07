@@ -5,33 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtWelcome"
-        style="@style/textBoxStyle"
-        android:layout_width="380dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="357dp"
-        android:layout_marginEnd="15dp"
-        android:text="Bem vindo/a ao SocialFit"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/bttnTreinoIniCostas"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Iniciante - Costas e Biceps"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoAvaOmbros"
+        tools:layout_editor_absoluteX="70dp" />
 
-    <TextView
-        android:id="@+id/txtUsername"
-        style="@style/textBoxStyle"
-        android:layout_width="380dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="393dp"
-        android:layout_marginEnd="15dp"
-        android:text="Username"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/bttnTreinoAvaOmbros"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Avançado - Ombros"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIntInf"
+        tools:layout_editor_absoluteX="73dp" />
+
+    <Button
+        android:id="@+id/bttnTreinoIniPeito"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Iniciante - Peito e Triceps"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIniCostas"
+        tools:layout_editor_absoluteX="65dp" />
+
+    <Button
+        android:id="@+id/bttnTreinoIniInf"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Iniciante - Inferiores"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIniPeito"
+        tools:layout_editor_absoluteX="65dp" />
+
+    <Button
+        android:id="@+id/bttnTreinoIntBody"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Intermediário - FullBody"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIniFull"
+        tools:layout_editor_absoluteX="65dp" />
+
+    <Button
+        android:id="@+id/bttnTreinoIniFull"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Iniciante - FullBody"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIniInf"
+        tools:layout_editor_absoluteX="65dp" />
+
+    <Button
+        android:id="@+id/bttnTreinoIntSup"
+        android:layout_width="280dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Intermediário - Superiores"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIntBody"
+        tools:layout_editor_absoluteX="65dp" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -39,27 +81,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="138dp"
-        android:layout_marginTop="526dp"
+        android:layout_marginTop="640dp"
         android:layout_marginEnd="143dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon" />
 
     <Button
         android:id="@+id/bttnCasinha"
-        android:layout_width="68dp"
-        android:layout_height="65dp"
+        android:layout_width="59dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:text="Button"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,8 +115,29 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/list_icon" />
+
+    <Button
+        android:id="@+id/bttnTreinoIntInf"
+        android:layout_width="279dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#eeb5eb"
+        android:text="Treino Intermediário - Inferiores"
+        app:layout_constraintBottom_toTopOf="@+id/bttnTreinoIntSup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="32dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
