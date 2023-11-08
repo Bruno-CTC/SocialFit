@@ -1,23 +1,11 @@
 package com.example.socialfit
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import org.json.JSONException
 
 class LoginActivity : AppCompatActivity() {
-
-    companion object {
-        private const val BASE_URL = "http://192.168.168.97:3000" // Replace with your API base URL
-    }
 
 
 
@@ -26,81 +14,43 @@ class LoginActivity : AppCompatActivity() {
         requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_login)
 
-        val button = findViewById<Button>(R.id.btnCadastrarLogin)
+        val button = findViewById<Button>(R.id.btnIrCadastrar)
         button.setOnClickListener {
             try {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             } catch (e: Exception) {
-                showErrorDialog("Error", e.message)
+                Utils.showDialog(this, "Error", e.message)
             }
         }
 
         val login = findViewById<Button>(R.id.btnLogin)
         login.setOnClickListener {
             try {
-                makeLoginRequest(
-                    findViewById<android.widget.EditText>(R.id.tvUsuarioLogin).text.toString(),
-                    findViewById<android.widget.EditText>(R.id.tvSenhaLogin).text.toString()
-                )
-            } catch (e: Exception) {
-                showErrorDialog("Error", e.message)
-            }
-        }
+                val username = findViewById<android.widget.EditText>(R.id.tvUsuario).text.toString().trim()
+                val password = findViewById<android.widget.EditText>(R.id.tvSenha).text.toString().trim()
 
-        val home = findViewById<ImageView>(R.id.bttnHome)
-        home.setOnClickListener{
-            val intent = Intent(this,HomeActivity::class.java)
-            startActivity(intent)
-        }
+                if (username.isEmpty() || password.isEmpty()) {
+                    Utils.showDialog(this, "Error", "Username and password must not be empty")
+                }
 
-    }
-
-    private fun makeLoginRequest(username: String, password: String) {
-        if (username.isEmpty() || password.isEmpty()) {
-            showErrorDialog("Error", "Username and password must not be empty")
-            return
-        }
-
-        val queue: RequestQueue = Volley.newRequestQueue(this)
-        val url = "$BASE_URL/user/$username" // Adjust to your login endpoint
-
-        // get data for that user
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            { response ->
-                try {
-                    val user = response.getString("password")
-                    if (user == password) {
-                        showErrorDialog("Success", "Login successful")
+                Utils.getUserData(this, username, { userData ->
+                    if (userData.password == password) {
                         val intent = Intent(this, HomeActivity::class.java)
                         intent.putExtra("username", username)
-                        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+                        Utils.saveVariable(this, "username", username)
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
                     } else {
-                        showErrorDialog("Error", "Incorrect password")
+                        Utils.showDialog(this, "Error", "Wrong password")
                     }
-                } catch (e: JSONException) {
-                    showErrorDialog("Error", e.message)
-                }
-            },
-            { error ->
-                if (error.networkResponse.statusCode == 404) {
-                    showErrorDialog("Error", "User not found")
-                } else {
-                    showErrorDialog("Error", error.message)
-                }
+                }, { error ->
+                    Utils.showDialog(this, "Error", "User not found")
+                })
+            } catch (e: Exception) {
+                Utils.showDialog(this, "Error", e.message)
             }
-        )
-
-        // Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest)
-    }
-
-    private fun showErrorDialog(title : String, message: String?) {
-        AlertDialog.Builder(this)
-            .setTitle(title)
-            .setMessage(message ?: "Unknown error")
-            .setPositiveButton("OK", null)
-            .show()
+        }
     }
 }

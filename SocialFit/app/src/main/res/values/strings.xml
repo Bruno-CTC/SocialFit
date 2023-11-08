@@ -16,4 +16,7 @@
     <string name="temconta">Já tem uma conta?</string>
     <string name="naotemconta">Não tem uma conta?</string>
     <string name="irparacadastro">Cadastre-se</string>
+    <string name="open_nav">Abrir sidebar</string>
+    <string name="close_nav">Fechar sidebar</string>
+    <string name="logout">Logout</string>
 </resources>

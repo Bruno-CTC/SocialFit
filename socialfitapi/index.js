@@ -1,6 +1,6 @@
 import express from 'express';
 import { initializeApp } from 'firebase/app';
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc, deleteDoc, query, where } from 'firebase/firestore/lite';
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc, deleteDoc, query, where, updateDoc } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC-laGMWj-L9FKFxeEnPfY41nexYyXbQR0",
@@ -52,10 +52,7 @@ const existsUserEmail = async (email) => {
 };
 
 const handleResponse = (res, status, message) => {
-res.status(status).send({
-        status: status,
-        message: message
-    });
+res.status(status).send(message);
 };
 
 const app = express();
@@ -65,6 +62,7 @@ app.use(express.json());
 
 app.get('/users', async (req, res) => {
     const users = await getDocs(usersCol);
+    console.log("Received get user list request")
     res.send(users.docs.map((doc) => doc.data()));
 });
 
@@ -72,6 +70,8 @@ app.get('/user/:id', async (req, res) => {
     const id = req.params.id;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user request with id: " + id)
+
     if (user) {
         res.send(user.data());
     } else {
@@ -84,6 +84,7 @@ app.get("/user/:id/trainings", async (req, res) => {
     const id = req.params.id;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user trainings request with id: " + id)
     if (user) {
         res.send(user.data().treinos);
     }
@@ -94,6 +95,7 @@ app.get("/user/:id/:trainingId", async (req, res) => {
     const trainingId = req.params.trainingId;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user training request with id: " + id + " and trainingId: " + trainingId)
     if (user) {
         const trainings = user.data().treinos;
         const training = trainings[trainingId];
@@ -113,6 +115,7 @@ app.get("/user/:id/:trainingId/days", async (req, res) => {
     const trainingId = req.params.trainingId;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user training days request with id: " + id + " and trainingId: " + trainingId)
     if (user) {
         const trainings = user.data().treinos;
         const training = trainings[trainingId];
@@ -130,6 +133,7 @@ app.get("/user/:id/:trainingId/:day", async (req, res) => {
     const day = req.params.day;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user training day request with id: " + id + " and trainingId: " + trainingId + " and day: " + day)
     if (user) {
         const trainings = user.data().treinos;
         const training = trainings[trainingId];
@@ -147,10 +151,44 @@ app.get("/user/:id/:trainingId/:day", async (req, res) => {
     }
 });
 
+app.get("/user/:id/:trainingId/:day/:exerciseId", async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const day = req.params.day;
+    const exerciseId = req.params.exerciseId;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received get user training exercise request with id: " + id + " and trainingId: " + trainingId + " and day: " + day + " and exerciseId: " + exerciseId)
+    if (user) {
+        const trainings = user.data().treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            const days = training.dias;
+            const dayTrainings = days[day];
+            if (dayTrainings) {
+                const exercises = dayTrainings;
+                const exercise = exercises[exerciseId];
+                if (exercise) {
+                    res.send(exercise);
+                } else {
+                    handleResponse(res, 404, 'Exercise does not exist');
+                }
+            } else {
+                handleResponse(res, 404, 'Day does not exist');
+            }
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
 app.post('/user', async (req, res) => {
     const newUser = req.body;
+    console.log("Received post user request with data: " + req.body)
     if (!validateUser(newUser)) {
         handleResponse(res, 400, 'Invalid input data');
+        console.log("Received data: " + newUser + " is invalid")
+        debugger;
     } else {
         const exists = await existsUser(newUser.id);
         const existsEmail = await existsUserEmail(newUser.email);
@@ -160,6 +198,7 @@ app.post('/user', async (req, res) => {
             handleResponse(res, 409, 'Email already exists');
         } else {
             newUser.treinos = [];
+            newUser.treinoAtual = 0;
             await setDoc(doc(db, 'user', newUser.id), newUser);
             handleResponse(res, 201, 'User created');
         }
@@ -171,58 +210,29 @@ app.post('/user/:id/training', async (req, res) => {
     const newTraining = req.body;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received post user training request with id: " + id + " and data: " + req.body)
     if (user) {
-        const trainings = user.data().treinos;
-        trainings.push(newTraining);
-        await setDoc(doc(db, 'user', id), user.data());
-        handleResponse(res, 201, 'Training created');
+        newTraining.dias = {Segunda: [], Terca: [], Quarta: [], Quinta: [], Sexta: [], Sabado: [], Domingo: []};
+        let data = user.data();
+        data.treinos.push(newTraining);
+        await setDoc(doc(db, 'user', id), data);
+        res.status(201).send(data.treinos.length.toString());
     }
 });
 
-app.post('/user/:id/:trainingId/day', async (req, res) => {
+app.post('/user/:id/:trainingId/:day', async (req, res) => {
     const id = req.params.id;
     const trainingId = req.params.trainingId;
     const newDay = req.body;
     const users = await getDocs(usersCol);
     const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received post user training day request with id: " + id + " and trainingId: " + trainingId + " and data: " + req.body)
     if (user) {
-        const trainings = user.data().treinos;
-        const training = trainings[trainingId];
-        if (training) {
-            const days = training.dias;
-            days.push(newDay);
-            await setDoc(doc(db, 'user', id), user.data());
-            handleResponse(res, 201, 'Day created');
-        } else {
-            handleResponse(res, 404, 'Training does not exist');
-        }
-    }
-});
-
-app.post('/user/:id/:trainingId/:day/exercise', async (req, res) => {
-    const id = req.params.id;
-    const trainingId = req.params.trainingId;
-    const day = req.params.day;
-    const newExercise = req.body;
-    const users = await getDocs(usersCol);
-    const user = users.docs.find((doc) => doc.data().id === id);
-    if (user) {
-        const trainings = user.data().treinos;
-        const training = trainings[trainingId];
-        if (training) {
-            const days = training.dias;
-            const dayTrainings = days[day];
-            if (dayTrainings) {
-                const exercises = dayTrainings.exercicios;
-                exercises.push(newExercise);
-                await setDoc(doc(db, 'user', id), user.data());
-                handleResponse(res, 201, 'Exercise created');
-            } else {
-                handleResponse(res, 404, 'Day does not exist');
-            }
-        } else {
-            handleResponse(res, 404, 'Training does not exist');
-        }
+        const data = user.data();
+        const trainings = data.treinos[trainingId].dias[req.params.day];
+        trainings.push(newDay);
+        await setDoc(doc(db, 'user', id), data);
+        res.status(201).send(trainings.length.toString());
     }
 });
 
@@ -237,7 +247,7 @@ app.put('/user/:id/:trainingId', async (req, res) => {
         const training = trainings[trainingId];
         if (training) {
             trainings[trainingId] = updatedTraining;
-            await setDoc(doc(db, 'user', id), user.data());
+            await updateDoc(doc(db, 'user', id), user.data());
             handleResponse(res, 200, 'Training updated');
         } else {
             handleResponse(res, 404, 'Training does not exist');
@@ -253,7 +263,7 @@ app.put('/user/:id', async (req, res) => {
     } else {
         const exists = await existsUser(id);
         if (exists) {
-            await setDoc(doc(db, 'user', id), updatedUser);
+            await updateDoc(doc(db, 'user', id), updatedUser);
             handleResponse(res, 200, 'User updated');
         } else {
             handleResponse(res, 404, 'User does not exist');
@@ -284,7 +294,75 @@ app.delete('/user/:id', async (req, res) => {
     }
 });
 
+app.delete('/user/:id/:trainingId', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    console.log("Received delete user training request with id: " + id + " and trainingId: " + trainingId)
+    if (user) {
+        let data = user.data();
+        const training = data.treinos[trainingId];
+        if (training) {
+            data.treinos.splice(trainingId, 1);
+            await updateDoc(doc(db, 'user', id), data);
+            handleResponse(res, 200, 'Training deleted');
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
+app.delete('/user/:id/:trainingId/:day', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const day = req.params.day;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        const trainings = user.data().treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            const days = training.dias;
+            days.splice(day, 1);
+            await updateDoc(doc(db, 'user', id), user.data());
+            handleResponse(res, 200, 'Day deleted');
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
+app.delete('/user/:id/:trainingId/:day/:exerciseId', async (req, res) => {
+    const id = req.params.id;
+    const trainingId = req.params.trainingId;
+    const day = req.params.day;
+    const exerciseId = req.params.exerciseId;
+    const users = await getDocs(usersCol);
+    const user = users.docs.find((doc) => doc.data().id === id);
+    if (user) {
+        let data = user.data();
+        const trainings = data.treinos;
+        const training = trainings[trainingId];
+        if (training) {
+            const days = training.dias;
+            const dayTrainings = days[day];
+            if (dayTrainings) {
+                const exercises = dayTrainings;
+                exercises.splice(exerciseId, 1);
+                await updateDoc(doc(db, 'user', id), data);
+                handleResponse(res, 200, 'Exercise deleted');
+            } else {
+                handleResponse(res, 404, 'Day does not exist');
+            }
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    }
+});
+
 app.use((req, res) => {
+    console.log("Received invalid request at path: \"" + req.path + "\"")
     handleResponse(res, 404, '404 Not Found');
 });
 

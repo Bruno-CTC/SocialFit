@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <View
-        android:id="@+id/view2"
-        android:layout_width="325dp"
-        android:layout_height="379dp"
+        android:id="@+id/cadastroContainer"
+        android:layout_width="355dp"
+        android:layout_height="376dp"
         android:layout_marginTop="144dp"
         android:background="@drawable/rounded_border"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,12 +22,11 @@
         android:id="@+id/view4"
         android:layout_width="283dp"
         android:layout_height="211dp"
-        android:layout_marginTop="476dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/rounded_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <TextView
         android:id="@+id/textView2"
@@ -42,24 +41,26 @@
         android:textColor="#fff"
         android:textSize="23sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer"
         tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="208dp"
         android:layout_height="34dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="41dp"
         android:fontFamily="@font/baloo"
         android:text="@string/temconta"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#fff"
         android:textSize="23sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -68,8 +69,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:text="@string/nome"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <TextView
         android:id="@+id/textView3"
@@ -84,8 +85,8 @@
         android:textColor="#fff"
         android:textSize="23sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <TextView
         android:id="@+id/textView4"
@@ -100,8 +101,8 @@
         android:textColor="#fff"
         android:textSize="23sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -117,14 +118,14 @@
         android:textColor="#fff"
         android:textSize="23sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <EditText
         android:id="@+id/tvUsuario"
         android:layout_width="214dp"
         android:layout_height="48dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="104dp"
         android:autofillHints=""
         android:background="@drawable/rounded_input"
@@ -133,15 +134,16 @@
         android:fontFamily="@font/alata"
         android:hint="@string/usuario_lower"
         android:inputType="text"
+        android:maxLength="15"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <EditText
         android:id="@+id/tvNome"
         android:layout_width="214dp"
         android:layout_height="48dp"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="36dp"
         android:autofillHints=""
         android:background="@drawable/rounded_input"
@@ -150,15 +152,16 @@
         android:fontFamily="@font/alata"
         android:hint="@string/nome_lower"
         android:inputType="text"
+        android:maxLength="30"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <EditText
         android:id="@+id/tvEmail"
         android:layout_width="214dp"
         android:layout_height="48dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="232dp"
         android:autofillHints=""
         android:background="@drawable/rounded_input"
@@ -167,15 +170,16 @@
         android:fontFamily="@font/alata"
         android:hint="@string/email_lower"
         android:inputType="textEmailAddress"
+        android:maxLength="30"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <EditText
         android:id="@+id/tvSenha"
         android:layout_width="214dp"
         android:layout_height="48dp"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="296dp"
         android:autofillHints=""
         android:background="@drawable/rounded_input"
@@ -184,15 +188,16 @@
         android:fontFamily="@font/alata"
         android:hint="@string/senha_lower"
         android:inputType="textPassword"
+        android:maxLength="30"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <EditText
         android:id="@+id/tvTelefone"
         android:layout_width="214dp"
         android:layout_height="48dp"
-        android:layout_marginStart="116dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="168dp"
         android:background="@drawable/rounded_input"
         android:backgroundTint="#fff"
@@ -201,65 +206,53 @@
         android:hint="@string/telefone_lower"
         android:importantForAutofill="no"
         android:inputType="phone"
+        android:maxLength="12"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer" />
 
     <Button
         android:id="@+id/btnCadastrar"
         style="@style/buttonStyle"
         android:layout_width="170dp"
         android:layout_height="52dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="358dp"
+        android:layout_marginEnd="91dp"
         android:text="@string/cadastrar"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/cadastroContainer"
+        app:layout_constraintStart_toStartOf="@+id/cadastroContainer"
+        app:layout_constraintTop_toTopOf="@+id/cadastroContainer"
         tools:ignore="TextSizeCheck" />
 
     <Button
-        android:id="@+id/btnLoginCadastrar"
+        android:id="@+id/btnIrLogin"
         style="@style/buttonStyle"
         android:layout_width="201dp"
         android:layout_height="58dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="41dp"
         android:text="@string/login"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4"
         tools:ignore="TextSizeCheck" />
 
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/circle_border"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/desc_user_icon"
+        app:layout_constraintBottom_toTopOf="@+id/cadastroContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
         app:srcCompat="@drawable/user_icon" />
-
-    <ImageView
-        android:id="@+id/btnHome"
-        android:layout_width="45dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_icon"
-        tools:layout_editor_absoluteX="350dp" />
-
-    <Button
-        android:id="@+id/btnCasa"
-        android:layout_width="69dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:text="Button"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="337dp"
-        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

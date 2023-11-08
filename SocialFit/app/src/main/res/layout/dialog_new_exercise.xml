@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/nameEditText"
+        style="@style/textBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        style="@style/textBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameEditText"
+        android:layout_marginTop="10dp"
+        android:hint="Descricao" />
+
+    <EditText
+        android:id="@+id/restEditText"
+        style="@style/textBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionEditText"
+        android:layout_marginTop="10dp"
+        android:hint="Descanso" />
+
+    <EditText
+        android:id="@+id/repetitionsEditText"
+        style="@style/textBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/restEditText"
+        android:layout_marginTop="10dp"
+        android:hint="Repeticoes" />
+
+    <EditText
+        android:id="@+id/seriesEditText"
+        style="@style/textBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/repetitionsEditText"
+        android:layout_marginTop="10dp"
+        android:hint="Series" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seriesEditText"
+        android:text="OK"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seriesEditText"
+        android:text="Cancel"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

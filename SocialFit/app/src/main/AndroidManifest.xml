@@ -14,7 +14,7 @@
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
+            android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +25,10 @@
         <activity android:name=".LoginActivity"
             android:exported="true"/>
         <activity android:name=".HomeActivity" />
+        <activity android:name=".TrainListActivity" />
+        <activity android:name=".TrainingEditActivity" />
+        <activity android:name=".ExerciseListActivity" />
+        <activity android:name=".ExerciseEditActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

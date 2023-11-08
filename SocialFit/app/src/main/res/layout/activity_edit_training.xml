@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <CheckBox
+        android:id="@+id/cbSelecionado"
+        style="@style/textBoxStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Selecionado"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDom" />
+
+    <Button
+        android:id="@+id/btnSab"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:text="Sabado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSex" />
+
+    <Button
+        android:id="@+id/btnDom"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:text="Domingo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSab" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/indigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/voltar" />
+
+        <ImageView
+            android:id="@+id/btnDeletar"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/deletar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnSeg"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:text="Segunda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar" />
+
+    <Button
+        android:id="@+id/btnTer"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="11dp"
+        android:text="Terca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSeg" />
+
+    <Button
+        android:id="@+id/btnQua"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="12dp"
+        android:text="Quarta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTer" />
+
+    <Button
+        android:id="@+id/btnQui"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="13dp"
+        android:text="Quinta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnQua" />
+
+    <Button
+        android:id="@+id/btnSex"
+        style="@style/buttonStyle"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="15dp"
+        android:text="Sexta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnQui" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
