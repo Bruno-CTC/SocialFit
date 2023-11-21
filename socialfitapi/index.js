@@ -12,6 +12,821 @@ const firebaseConfig = {
     measurementId: "G-5LFR48CT88"
 };
 
+const treinoIniciante = {
+    descricao: "Treino Iniciante - Primeira Sequência",
+    nome: "Treino Iniciante",
+    dias: {
+        "Segunda": [
+            {
+                descricao: "Agachamento Livre",
+                nome: "Agachamento Livre",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Supino Inclinado com Barra ou Halteres",
+                nome: "Supino Inclinado",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Leg Press",
+                nome: "Leg Press",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Pull-Ups (Barra Fixa) ou Pulldowns",
+                nome: "Pull-Ups / Pulldowns",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Cadeira Extensora",
+                nome: "Cadeira Extensora",
+                series: 3,
+                repeticoes: 12,
+                descanso: 1
+            }
+        ],
+        "Terça": [
+            {
+                descricao: "Deadlift",
+                nome: "Deadlift",
+                series: 3,
+                repeticoes: 8,
+                descanso: 2
+            },
+            {
+                descricao: "Supino Reto com Barra ou Halteres",
+                nome: "Supino Reto",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Cadeira Flexora deitado",
+                nome: "Cadeira Flexora",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Remada com Barra T",
+                nome: "Remada com Barra T",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação de Panturrilha em Máquina",
+                nome: "Elevação de Panturrilha",
+                series: 3,
+                repeticoes: 15,
+                descanso: 1
+            }
+        ],
+        "Quarta": [
+            {
+                descricao: "Agachamento Frontal",
+                nome: "Agachamento Frontal",
+                series: 3,
+                repeticoes: 8,
+                descanso: 2
+            },
+            {
+                descricao: "Supino Declinado com Barra ou Halteres",
+                nome: "Supino Declinado",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Afundo",
+                nome: "Afundo",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Pull-Ups (Barra Fixa) ou Pulldowns",
+                nome: "Pull-Ups / Pulldowns",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação de Panturrilha Sentado",
+                nome: "Elevação de Panturrilha Sentado",
+                series: 3,
+                repeticoes: 15,
+                descanso: 1
+            }
+        ]
+    }
+};
+treinoIniciante.dias["Quinta"] = treinoIniciante.dias["Segunda"];
+treinoIniciante.dias["Sexta"] = treinoIniciante.dias["Terca"];
+const treinoAvancado = {
+    descricao: "Treino Avançado - Primeira Sequência",
+    nome: "Treino Avançado",
+    dias: {
+        "Segunda":  [
+            {
+                descricao: "Supino Reto",
+                nome: "Supino Reto",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Supino Inclinado",
+                nome: "Supino Inclinado",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Crucifixo (Flies)",
+                nome: "Crucifixo",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Paralelas (Dips)",
+                nome: "Paralelas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Testa (Skull Crushers)",
+                nome: "Tríceps Testa",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Corda (Cable Pushdown)",
+                nome: "Tríceps Corda",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            }
+        ],
+        "Terca": [
+            {
+                descricao: "Puxada na Frente (Pull-Ups ou Lat Pulldown)",
+                nome: "Puxada na Frente",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Barra Fixa (Chin-Ups)",
+                nome: "Barra Fixa",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Pulldown com Pegada Aberta (Wide-Grip Pulldown)",
+                nome: "Pulldown Pegada Aberta",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Remada Curvada",
+                nome: "Remada Curvada",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Direta (Barbell Curl)",
+                nome: "Rosca Direta",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Alternada (Alternating Dumbbell Curl)",
+                nome: "Rosca Alternada",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            }
+        ],
+        "Quarta": [
+            {
+                descricao: "Agachamento Livre (Squat)",
+                nome: "Agachamento Livre",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Leg Press",
+                nome: "Leg Press",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Extensora de Pernas",
+                nome: "Extensora de Pernas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Flexora de Pernas",
+                nome: "Flexora de Pernas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Panturrilha em Pé (Calf Raises)",
+                nome: "Panturrilha em Pé",
+                series: 4,
+                repeticoes: 12,
+                descanso: 1
+            }
+        ],
+        "Quinta": [
+            {
+                descricao: "Desenvolvimento Militar",
+                nome: "Desenvolvimento Militar",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação Lateral",
+                nome: "Elevação Lateral",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação Frontal",
+                nome: "Elevação Frontal",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Encolhimento de Ombros (Trapézio)",
+                nome: "Encolhimento de Ombros",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            }
+        ],
+        "Sexta": [
+            {
+                descricao: "Rosca Scott (Preacher Curl)",
+                nome: "Rosca Scott",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Testa (Skull Crushers)",
+                nome: "Tríceps Testa",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Martelo (Hammer Curl)",
+                nome: "Rosca Martelo",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Corda (Cable Pushdown)",
+                nome: "Tríceps Corda",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Prancha",
+                nome: "Prancha",
+                series: 3,
+                repeticoes: 30,
+                descanso: 60
+            },
+            {
+                descricao: "Abdominais Crunch",
+                nome: "Abdominais Crunch",
+                series: 3,
+                repeticoes: 15,
+                descanso: 1
+            }
+        ]
+    }
+};
+const treinoAvancado2 = {
+    descricao: "Treino Avançado - Terceira Sequência",
+    nome: "Treino Avançado",
+    dias: {
+        "Segunda": [
+            {
+                descricao: "Supino Reto",
+                nome: "Supino Reto",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Supino Inclinado",
+                nome: "Supino Inclinado",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Crucifixo (Flies)",
+                nome: "Crucifixo",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Paralelas (Dips)",
+                nome: "Paralelas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Testa (Skull Crushers)",
+                nome: "Tríceps Testa",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Corda (Cable Pushdown)",
+                nome: "Tríceps Corda",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            }
+        ],
+        "Terca": [
+            {
+                descricao: "Puxada na Frente (Pull-Ups ou Lat Pulldown)",
+                nome: "Puxada na Frente",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Barra Fixa (Chin-Ups)",
+                nome: "Barra Fixa",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Pulldown com Pegada Aberta (Wide-Grip Pulldown)",
+                nome: "Pulldown Pegada Aberta",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Remada Curvada",
+                nome: "Remada Curvada",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Direta (Barbell Curl)",
+                nome: "Rosca Direta",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Alternada (Alternating Dumbbell Curl)",
+                nome: "Rosca Alternada",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            }
+        ],
+        "Quarta": [
+            {
+                descricao: "Agachamento Livre (Squat)",
+                nome: "Agachamento Livre",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Leg Press",
+                nome: "Leg Press",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Extensora de Pernas",
+                nome: "Extensora de Pernas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Flexora de Pernas",
+                nome: "Flexora de Pernas",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Panturrilha em Pé (Calf Raises)",
+                nome: "Panturrilha em Pé",
+                series: 4,
+                repeticoes: 12,
+                descanso: 1
+            }
+        ],
+        "Quinta": [
+            {
+                descricao: "Desenvolvimento Militar",
+                nome: "Desenvolvimento Militar",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação Lateral",
+                nome: "Elevação Lateral",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Elevação Frontal",
+                nome: "Elevação Frontal",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Encolhimento de Ombros (Trapézio)",
+                nome: "Encolhimento de Ombros",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            }
+        ],
+        "Sexta": [
+            {
+                descricao: "Rosca Scott (Preacher Curl)",
+                nome: "Rosca Scott",
+                series: 4,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Testa (Skull Crushers)",
+                nome: "Tríceps Testa",
+                series: 3,
+                repeticoes: 8,
+                descanso: 1
+            },
+            {
+                descricao: "Rosca Martelo (Hammer Curl)",
+                nome: "Rosca Martelo",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Tríceps Corda (Cable Pushdown)",
+                nome: "Tríceps Corda",
+                series: 3,
+                repeticoes: 10,
+                descanso: 1
+            },
+            {
+                descricao: "Prancha",
+                nome: "Prancha",
+                series: 3,
+                repeticoes: 30,
+                descanso: 1
+            },
+            {
+                descricao: "Abdominais Crunch",
+                nome: "Abdominais Crunch",
+                series: 3,
+                repeticoes: 15,
+                descanso: 1
+            }
+        ]
+    }
+};
+const treinoAvancado1 = {
+    descricao: "Treino Intermediário - Segunda Sequência",
+    nome: "Treino Intermediário",
+    dias: {
+        "Segunda": [
+            {
+                descricao: "Treino de Corpo Inteiro",
+                nome: "Treino de Corpo Inteiro",
+                exercicios: [
+                    {
+                        descricao: "Agachamento (Squat)",
+                        nome: "Agachamento",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Supino Reto (Bench Press)",
+                        nome: "Supino Reto",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Puxada na Frente (Pull-Ups ou Lat Pulldown)",
+                        nome: "Puxada na Frente",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Rosca Direta (Barbell Curl)",
+                        nome: "Rosca Direta",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Tríceps Testa (Skull Crushers)",
+                        nome: "Tríceps Testa",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    }
+                ]
+            },
+            // [ Continue ]
+        ],
+        "Terca": [
+            {
+                descricao: "Treino de Pernas e Core",
+                nome: "Treino de Pernas e Core",
+                exercicios: [
+                    {
+                        descricao: "Levantamento Terra (Deadlift)",
+                        nome: "Levantamento Terra",
+                        series: 4,
+                        repeticoes: "6-8",
+                        descanso: 2
+                    },
+                    {
+                        descricao: "Leg Press",
+                        nome: "Leg Press",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Extensora de Pernas",
+                        nome: "Extensora de Pernas",
+                        series: 3,
+                        repeticoes: "10-12",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Prancha",
+                        nome: "Prancha",
+                        series: 3,
+                        repeticoes: "30-60 segundos",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Abdominais Pendurados (Hanging Leg Raise)",
+                        nome: "Abdominais Pendurados",
+                        series: 3,
+                        repeticoes: "12-15",
+                        descanso: 1
+                    }
+                ]
+            },
+            // [ Continue ]
+        ],
+        "Quarta": [
+            {
+                descricao: "Treino de Ombros e Braços",
+                nome: "Treino de Ombros e Braços",
+                
+                exercicios: [
+                    {
+                        descricao: "Desenvolvimento Militar",
+                        nome: "Desenvolvimento Militar",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Elevação Lateral",
+                        nome: "Elevação Lateral",
+                        series: 3,
+                        repeticoes: "10-12",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Encolhimento de Ombros (Trapézio)",
+                        nome: "Encolhimento de Ombros",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Rosca Martelo (Hammer Curl)",
+                        nome: "Rosca Martelo",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Tríceps Corda (Cable Pushdown)",
+                        nome: "Tríceps Corda",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    }
+                ]
+            },
+        ],
+    }
+};
+treinoAvancado1.dias["Quinta"] = treinoAvancado1.dias["Segunda"];
+treinoAvancado1.dias["Sexta"] = treinoAvancado1.dias["Terca"];
+const treinoIntermediario = {
+    descricao: "Treino Intermediário - Primeira Sequência",
+    nome: "Treino Intermediário",
+    dias: {
+        "Segunda": [
+            {
+                descricao: "Treino de Corpo Inteiro",
+                nome: "Treino de Corpo Inteiro",
+                
+                exercicios: [
+                    {
+                        descricao: "Agachamento (Squat)",
+                        nome: "Agachamento",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Supino Reto (Bench Press)",
+                        nome: "Supino Reto",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Puxada na Frente (Pull-Ups ou Lat Pulldown)",
+                        nome: "Puxada na Frente",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Rosca Direta (Barbell Curl)",
+                        nome: "Rosca Direta",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Tríceps Testa (Skull Crushers)",
+                        nome: "Tríceps Testa",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    }
+                ]
+            },
+            {
+                // Continue with exercises for "Treino de Corpo Inteiro" on Segunda
+            },
+        ],
+        "Terca": [
+            {
+                descricao: "Treino de Pernas e Core",
+                nome: "Treino de Pernas e Core",
+                
+                exercicios: [
+                    {
+                        descricao: "Levantamento Terra (Deadlift)",
+                        nome: "Levantamento Terra",
+                        series: 4,
+                        repeticoes: "6-8",
+                        descanso: 2
+                    },
+                    {
+                        descricao: "Leg Press",
+                        nome: "Leg Press",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Extensora de Pernas",
+                        nome: "Extensora de Pernas",
+                        series: 3,
+                        repeticoes: "10-12",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Prancha",
+                        nome: "Prancha",
+                        series: 3,
+                        repeticoes: "30-60 segundos",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Abdominais Pendurados (Hanging Leg Raise)",
+                        nome: "Abdominais Pendurados",
+                        series: 3,
+                        repeticoes: "12-15",
+                        descanso: 1
+                    }
+                ]
+            },
+            // Continue with exercises for "Treino de Pernas e Core" on Terca
+        ],
+        "Quarta": [
+            {
+                descricao: "Treino de Ombros e Braços",
+                nome: "Treino de Ombros e Braços",
+                
+                exercicios: [
+                    {
+                        descricao: "Desenvolvimento Militar",
+                        nome: "Desenvolvimento Militar",
+                        series: 4,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Elevação Lateral",
+                        nome: "Elevação Lateral",
+                        series: 3,
+                        repeticoes: "10-12",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Encolhimento de Ombros (Trapézio)",
+                        nome: "Encolhimento de Ombros",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Rosca Martelo (Hammer Curl)",
+                        nome: "Rosca Martelo",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    },
+                    {
+                        descricao: "Tríceps Corda (Cable Pushdown)",
+                        nome: "Tríceps Corda",
+                        series: 3,
+                        repeticoes: "8-10",
+                        descanso: 1
+                    }
+                ]
+            },
+        ],
+    }
+};
+treinoIntermediario.dias["Quinta"] = treinoIntermediario.dias["Segunda"];
+treinoIntermediario.dias["Sexta"] = treinoIntermediario.dias["Terca"];
+
+
 const firebase = initializeApp(firebaseConfig);
 const db = getFirestore(firebase);
 
@@ -59,6 +874,16 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+
+    app.get("/treinos-pre-preparados", (req, res) => {
+    res.json([
+        treinoIniciante,
+        treinoIntermediario,
+        treinoAvancado,
+        treinoAvancado1,
+        treinoAvancado2
+    ]);
+})
 
 app.get('/users', async (req, res) => {
     const users = await getDocs(usersCol);
