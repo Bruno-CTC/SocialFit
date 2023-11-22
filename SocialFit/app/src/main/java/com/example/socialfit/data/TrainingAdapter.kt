@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialfit.R
 
-class TrainingAdapter(private var items: List<TrainingData>) : RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>(){
+class TrainingAdapter(var items: List<TrainingData>) : RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>(){
     var username: String? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_training, parent, false)

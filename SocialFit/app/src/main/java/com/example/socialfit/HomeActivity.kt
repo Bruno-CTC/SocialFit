@@ -99,6 +99,13 @@ class HomeActivity : AppCompatActivity() {
                     Utils.removeVariable(this, "username")
                     startActivity(intent)
                 }
+                R.id.nav_search -> {
+                    val intent = Intent(this, SearchActivity::class.java)
+                    intent.putExtra("username", username)
+                    startActivity(intent)
+                    drawerLayout.closeDrawers()
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                }
             }
             true
         }

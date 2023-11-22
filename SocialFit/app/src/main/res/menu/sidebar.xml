@@ -9,8 +9,12 @@
             android:icon="@drawable/home_icon"/>
         <item
             android:id="@+id/nav_training_list"
-            android:title="Training List"
+            android:title="Lista de treinos"
             android:icon="@drawable/list_icon"/>
+        <item
+            android:id="@+id/nav_search"
+            android:title="Pesquisar"
+            android:icon="@drawable/search_icon"/>
         <item
             android:id="@+id/nav_logout"
             android:title="Logout" />

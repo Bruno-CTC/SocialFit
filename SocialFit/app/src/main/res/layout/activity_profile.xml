@@ -5,122 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/indigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/voltar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/imgUser3"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/desc_user_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
         app:srcCompat="@drawable/user_icon" />
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="287dp"
-        android:layout_height="507dp"
-        android:layout_marginTop="279dp"
-        android:background="@drawable/border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        style="@style/buttonStyle"
-        android:layout_width="243dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="22dp"
-        android:backgroundTint="#dee4fc"
-        android:text="Treino Atual"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/view5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toTopOf="@+id/view5" />
-
-    <Button
-        android:id="@+id/button4"
-        style="@style/buttonStyle"
-        android:layout_width="243dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="22dp"
-        android:backgroundTint="#dee4fc"
-        android:text="Primeiro Treino"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/view5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toTopOf="@+id/view5" />
-
-    <Button
-        android:id="@+id/button3"
-        style="@style/buttonStyle"
-        android:layout_width="243dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="22dp"
-        android:backgroundTint="#dee4fc"
-        android:text="Terceiro Treino"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/view5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toTopOf="@+id/view5" />
-
-    <Button
-        android:id="@+id/button2"
-        style="@style/buttonStyle"
-        android:layout_width="243dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="22dp"
-        android:backgroundTint="#dee4fc"
-        android:text="Treino Anterior"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/view5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toTopOf="@+id/view5" />
-
-    <ImageView
-        android:id="@+id/bttnTres"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/list_icon" />
-
-    <ImageView
-        android:id="@+id/bttnHomesinha"
-        android:layout_width="45dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="356dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_icon" />
-
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="171dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="220dp"
+        android:id="@+id/txtUsuario"
+        android:layout_width="175dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="12dp"
         android:text="Id do usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgUser3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcTreinos"
+        android:layout_width="303dp"
+        android:layout_height="433dp"
+        android:layout_marginTop="12dp"
+        android:background="#dee4fc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

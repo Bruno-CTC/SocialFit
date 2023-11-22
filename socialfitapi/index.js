@@ -846,6 +846,7 @@ let treinos = [
 app.get("/treinos-pre-preparados", (req, res) => {
     res.json(treinos);
 })
+
 app.get("/treinos-pre-preparados/:id", (req, res) => {
     const id = req.params.id;
     if (treinos.length > id) {
@@ -853,6 +854,44 @@ app.get("/treinos-pre-preparados/:id", (req, res) => {
     }
     else {
         res.status(404).send("Treino não encontrado");
+    }
+})
+
+app.get("/search/:query", async (req, res) => {
+    // searchs an user by name/id (if starts with @ its id), returns all users that match the query
+    const query = req.params.query;
+    const users = await getDocs(usersCol);
+    const usersData = users.docs.map((doc) => doc.data());
+    const usersFound = usersData.filter((user) => user.name.includes(query) || user.id.includes(query));
+    res.send(usersFound);
+})
+
+app.post("/copy/:user1/:training1/:user2", async (req, res) => {
+    // copy a training from user1 to user2
+    console.log("Received copy training request with user1: " + req.params.user1 + " training1: " + req.params.training1 + " user2: " + req.params.user2 + "");
+    const user1 = req.params.user1;
+    const training1 = req.params.training1;
+    const user2 = req.params.user2;
+    const users = await getDocs(usersCol);
+    const user1Data = users.docs.find((doc) => doc.data().id === user1);
+    const user2Data = users.docs.find((doc) => doc.data().id === user2);
+    if (user1Data && user2Data) {
+        console.log("User1 and User2 found");
+        const treinos1 = user1Data.data().treinos;
+        const treinos2 = user2Data.data().treinos;
+        console.log(treinos1);
+        const treino = treinos1[training1];
+        if (treino) {
+            treinos2.push(treino);
+            await updateDoc(doc(db, 'user', user2Data.id), {
+                treinos: treinos2
+            });
+            res.send(treinos2);
+        } else {
+            handleResponse(res, 404, 'Training does not exist');
+        }
+    } else {
+        handleResponse(res, 404, 'User does not exist');
     }
 })
 

@@ -75,6 +75,25 @@ class Utils {
             })
             queue.add(request)
         }
+        fun getUserTraining(context: Context, username: String, trainingId: Int, callback: (TrainingData) -> Unit, error: (String) -> Unit) {
+            val queue = Volley.newRequestQueue(context)
+            val request = JsonObjectRequest(ROOT_URL + "/user/" + username + "/" + trainingId, { response: JSONObject ->
+                try {
+                    val training = TrainingData()
+                    training.description = response.getString("descricao")
+                    training.name = response.getString("nome")
+                    training.id = trainingId
+                    callback(training)
+                } catch (e: Exception) {
+                    error(e.toString())
+                }
+            }, { error: VolleyError ->
+                val UTF_8: Charset = Charset.forName("UTF-8")
+                val body = String(error.networkResponse.data, UTF_8)
+                error(body)
+            })
+            queue.add(request)
+        }
         fun getUserTrainings(context: Context, username: String, callback: (ArrayList<TrainingData>) -> Unit, error: (String) -> Unit) {
             val queue = Volley.newRequestQueue(context)
             val request = JsonArrayRequest(ROOT_URL + "/user/" + username + "/trainings", { response: JSONArray? ->
@@ -444,6 +463,53 @@ class Utils {
             }
             queue.add(request)
         }
+        fun searchForUser(context: Context, query : String, callback: (ArrayList<UserData>) -> Unit, error : (String) -> Unit) {
+            // /search/:query
+            val queue = Volley.newRequestQueue(context)
+            val request = JsonArrayRequest(ROOT_URL + "/search/$query",
+                { response: JSONArray? ->
+                    try {
+                        val users = ArrayList<UserData>()
 
+                        for (i in 0 until response!!.length()) {
+                            val userJson = response.getJSONObject(i)
+                            val user = UserData().apply {
+                                username = userJson.getString("id")
+                                name = userJson.getString("name")
+                                email = userJson.getString("email")
+                                phone = userJson.getString("phone")
+                            }
+                            users.add(user)
+                        }
+                        if (users.size == 0) {
+                            error("Nenhum usuário encontrado")
+                        }
+                        callback(users)
+                    } catch (e: Exception) {
+                        error(e.toString())
+                    }
+                },
+                { error: VolleyError ->
+                    val UTF_8: Charset = Charset.forName("UTF-8")
+                    val body = String(error.networkResponse.data, UTF_8)
+                    error(body)
+                })
+
+            queue.add(request)
+        }
+        fun copyTraining(context: Context, userFrom: String, userTo: String, trainingId: Int, callback: (String) -> Unit, error : (String) -> Unit) {
+            // make a post request to /user/:userId/copy-training/:trainingId
+            val queue = Volley.newRequestQueue(context)
+            val request = object : StringRequest(
+                Method.POST, "$ROOT_URL/copy/$userFrom/$trainingId/$userTo",
+                Response.Listener { response ->
+                    callback(response)
+                },
+                Response.ErrorListener { error ->
+                    error(error.networkResponse.data.toString())
+                }) {
+            }
+            queue.add(request)
+        }
     }
 }
