@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView1"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viewUsuario"
+            android:layout_width="327dp"
+            android:layout_height="474dp"
+            android:background="#dee4fc" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            style="@style/textBoxStyle"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:backgroundTint="#dee4fc"
+            android:text="TextView"
+            tools:text="Username" />
+
+        <ScrollView
+            android:id="@+id/tolBar1"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@color/indigo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="38dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/search_icon" />
+
+        <ImageView
+            android:id="@+id/btnSideBar2"
+            android:layout_width="53dp"
+            android:layout_height="48dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            app:srcCompat="@drawable/list_icon" />
+
+        <TextView
+            android:id="@+id/txtMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
