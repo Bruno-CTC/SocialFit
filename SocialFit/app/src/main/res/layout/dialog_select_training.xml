@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text= "Treino Iniciante"
+        android:id="@+id/iniciante">
+    </Button>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text= "Treino Intermediario"
+        android:id="@+id/intermediario">
+    </Button>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text= "Treino Avançado 1"
+        android:id="@+id/avancado1">
+    </Button>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text= "Treino Avançado 2"
+        android:id="@+id/avancado2">
+    </Button>
+    <Button
+    android:id="@+id/avancado3"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="Treino Avançado 3" />
+    <Button
+        android:id="@+id/cancelar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Cancelar" />
+</LinearLayout>

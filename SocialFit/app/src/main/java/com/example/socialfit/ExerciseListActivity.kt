@@ -30,6 +30,34 @@ class ExerciseListActivity : AppCompatActivity() {
         add.setOnClickListener {
             val dialog = DialogNewExercise(this, object: ExerciseDialogCallback {
                 override fun onPositiveButtonClicked(name: String, description: String, rest: String, repetitions: String, series: String) {
+                    if (name.isEmpty() || description.isEmpty() || rest.isEmpty() || repetitions.isEmpty() || series.isEmpty()) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Preencha todos os campos")
+                        return
+                    }
+                    if (rest.toInt() <= 0 || repetitions.toInt() <= 0 || series.toInt() <= 0) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Valores inválidos")
+                        return
+                    }
+                    if (name.length > 30) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Nome muito longo")
+                        return
+                    }
+                    else if (name.length < 4) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Nome muito curto")
+                        return
+                    }
+                    if (description.length > 100) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Descrição muito longa")
+                        return
+                    }
+                    if (repetitions.toInt() > 100) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Repetições muito grande")
+                        return
+                    }
+                    if (series.toInt() > 100) {
+                        Utils.showDialog(this@ExerciseListActivity, "Error", "Séries muito grande")
+                        return
+                    }
                     val data = ExerciseData()
                     data.name = name
                     data.description = description

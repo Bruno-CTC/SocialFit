@@ -17,7 +17,7 @@ import java.nio.charset.Charset
 
 class Utils {
     companion object {
-        const val ROOT_URL = "http://192.168.172.97:3000"
+        const val ROOT_URL = "http://192.168.15.102:3000"
         fun showDialog(context: Context, title: String, message: String?) {
             AlertDialog.Builder(context)
                 .setTitle(title)
@@ -151,7 +151,6 @@ class Utils {
             })
             queue.add(request)
         }
-
         fun postUserData(context: Context, userData: UserData, callback: (String) -> Unit, error : (String) -> Unit) {
             val queue = Volley.newRequestQueue(context)
             val params = JSONObject()
@@ -224,7 +223,6 @@ class Utils {
             }
             queue.add(request)
         }
-
         fun putUserData(context: Context, userData: UserData, callback: (String) -> Unit, error : (String) -> Unit) {
             val queue = Volley.newRequestQueue(context)
             val params = JSONObject()
@@ -292,7 +290,6 @@ class Utils {
             }
             queue.add(request)
         }
-
         fun deleteUserData(context: Context, username: String, callback: (String) -> Unit, error : (String) -> Unit) {
             val queue = Volley.newRequestQueue(context)
             val request = object : StringRequest(
@@ -332,5 +329,121 @@ class Utils {
             }
             queue.add(request)
         }
+
+        // others
+        fun getPremadeTrainings(context: Context, callback: (ArrayList<TrainingData>) -> Unit, error: (String) -> Unit) {
+            val queue = Volley.newRequestQueue(context)
+            val request = JsonArrayRequest(ROOT_URL + "/treinos-pre-preparados",
+                { response: JSONArray? ->
+                    try {
+                        val trainings = ArrayList<TrainingData>()
+
+                        for (i in 0 until response!!.length()) {
+                            val trainingJson = response.getJSONObject(i)
+                            val training = TrainingData().apply {
+                                description = trainingJson.getString("descricao")
+                                name = trainingJson.getString("nome")
+                                id = i
+                            }
+                            trainings.add(training)
+
+                            val exercisesJson = trainingJson.getJSONObject("dias")
+                            val daysNames = arrayOf("Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo")
+
+                            for (j in 0 until 5) {
+                                val dayExercisesJson = exercisesJson.getJSONArray(daysNames[j])
+                                val exercises = ArrayList<ExerciseData>()
+
+                                for (k in 0 until dayExercisesJson.length()) {
+                                    val exerciseJson = dayExercisesJson.getJSONObject(k)
+                                    val exercise = ExerciseData().apply {
+                                        name = exerciseJson.getString("nome")
+                                        description = exerciseJson.getString("descricao")
+                                        repetitions = exerciseJson.getInt("repeticoes")
+                                        series = exerciseJson.getInt("series")
+                                        rest = exerciseJson.getInt("descanso")
+                                        id = k
+                                    }
+                                    exercises.add(exercise)
+                                }
+
+                                training.days[training.name] = exercises
+                            }
+                        }
+                        callback(trainings)
+                    } catch (e: Exception) {
+                        error(e.toString())
+                    }
+                },
+                { error: VolleyError ->
+                    val UTF_8: Charset = Charset.forName("UTF-8")
+                    val body = String(error.networkResponse.data, UTF_8)
+                    error(body)
+                })
+
+            queue.add(request)
+        }
+        fun getPremadeTraining(context: Context, trainingId: Int, callback: (TrainingData) -> Unit, error: (String) -> Unit) {
+            val queue = Volley.newRequestQueue(context)
+            val request = JsonObjectRequest(ROOT_URL + "/treinos-pre-preparados/$trainingId",
+                { response: JSONObject? ->
+                    try {
+                        val training = TrainingData().apply {
+                            description = response!!.getString("descricao")
+                            name = response.getString("nome")
+                            id = trainingId
+                        }
+
+                        val exercisesJson = response!!.getJSONObject("dias")
+                        val daysNames = arrayOf("Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo")
+
+                        for (j in 0 until 5) {
+                            val dayExercisesJson = exercisesJson.getJSONArray(daysNames[j])
+                            val exercises = ArrayList<ExerciseData>()
+
+                            for (k in 0 until dayExercisesJson.length()) {
+                                val exerciseJson = dayExercisesJson.getJSONObject(k)
+                                val exercise = ExerciseData().apply {
+                                    name = exerciseJson.getString("nome")
+                                    description = exerciseJson.getString("descricao")
+                                    repetitions = exerciseJson.getInt("repeticoes")
+                                    series = exerciseJson.getInt("series")
+                                    rest = exerciseJson.getInt("descanso")
+                                    id = k
+                                }
+                                exercises.add(exercise)
+                            }
+
+                            training.days[training.name] = exercises
+                        }
+
+                        callback(training)
+                    } catch (e: Exception) {
+                        error(e.toString())
+                    }
+                },
+                { error: VolleyError ->
+                    val UTF_8: Charset = Charset.forName("UTF-8")
+                    val body = String(error.networkResponse.data, UTF_8)
+                    error(body)
+                })
+
+            queue.add(request)
+        }
+        fun postPremadeTraining(context: Context, username: String, trainingId: Int, callback: (String) -> Unit, error : (String) -> Unit) {
+            // make a post request to /user/:userId/add-premade/:premadeId
+            val queue = Volley.newRequestQueue(context)
+            val request = object : StringRequest(
+                Method.POST, "$ROOT_URL/user/$username/add-premade/$trainingId",
+                Response.Listener { response ->
+                    callback(response)
+                },
+                Response.ErrorListener { error ->
+                    error(error.toString())
+                }) {
+            }
+            queue.add(request)
+        }
+
     }
 }
